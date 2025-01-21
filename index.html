@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Webbie</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Monsieur+La+Doulaise&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="container">
+    <div id="cursor">
+      <header>
+        <div class="navbar">
+          <div class="logo"><i class="fa-brands fa-playstation fa-2xl" style="color: #63E6BE;"></i> jose</div>
+          <div>
+            <i class="fa-regular fa-comment fa-xl" style="color:#63E6BE"></i>
+            <a href="#" style="color:#63E6BE;">HIRE ME</a>
+          </div>
+          <div class="menu">
+            <i class="fa-solid fa-bars fa-xl" style="color: #63E6BE;"></i>
+          </div>
+        </div>
+      </header>
+      <div class="introimage ">
+        <div class="intro">
+          <h1 style="font-size: 4em; color: #ffffff;">Hi, my <br>name is <strong style="font-size: 75px; color: #ffffff;">Jose Mohrinho .</strong></br></strong></h1>
+          <p>I am a <strong>Senior Software Developer </strong> and <strong>Automation Tools Expert</strong>  <i class="fa-solid fa-wand-sparkles fa-sm" style="color: #63E6BE;"></i></strong></p>
+          <h1 id="next">Learn about my <a href="xyz.html" id="pro">Projects</a>.</h1>
+        </div>
+        <!-- <img src="josee.jpeg" alt="hermione" class="iim"> -->
+      </div>
+      <script>
+        for(var i = 0; i<350 ; i++){
+            let box = document.createElement('span');
+            document.getElementById('container').appendChild(box);
+        }
+        let cursor = document.getElementById('cursor');
+        window.onmousemove = function(e){
+            cursor.style.left = e.clientX + 'px' ;
+            cursor.style.top = e.clientY + 'px';
+        }
+      </script>
+      <footer>
+        <p>&copy; 2025 Jose. All rights reserved.</p>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>

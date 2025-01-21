@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="dang.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+        <header>
+            <div class="navbar">
+              <div class="logo"><i class="fa-brands fa-playstation fa-2xl" style="color: #63E6BE;"></i> jose</div>
+              <div>
+                <i class="fa-regular fa-comment fa-xl" style="color:#63E6BE"></i>
+                <a href="#" style="color:#63E6BE;">HIRE ME</a>
+              </div>
+              <div class="menu">
+                <i class="fa-solid fa-bars fa-xl" style="color: #63E6BE;"></i>
+              </div>
+            </div>
+          </header>
+    </div>
+    <div id="cursor">
+        
+    </div>
+    <script>
+        for(var i = 0; i<350 ; i++){
+            let box = document.createElement('span');
+            document.getElementById('container').appendChild(box);
+        }
+        let cursor = document.getElementById('cursor');
+        window.onmousemove = function(e){
+            cursor.style.left = e.clientX + 'px' ;
+            cursor.style.top = e.clientY + 'px';
+        }
+    </script>
+</body>
+</html>
