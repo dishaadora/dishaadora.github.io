@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WEBBIE</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bungee+Hairline&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+        background: radial-gradient(
+          circle,
+          rgb(65, 21, 147) 5%,
+          rgb(21, 3, 53) 100%
+        );
+        transition: all 0.7s ease; /* transition all properties smoothly */
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+      body.fade-out {
+        opacity: 0;
+      }
+      body.transition-out {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.95);
+        filter: blur(2px);
+      }
+
+      /* Fade in effect for new page */
+      body.transition-in {
+        opacity: 0;
+        transform: translateY(50px) scale(1.05);
+        animation: fadeIn 0.7s forwards;
+      }
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+      header {
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+        align-items: center;
+        justify-content: space-around;
+        color: #fff;
+        font-family: 'Bungee Hairline', sans-serif;
+        font-size: 30px;
+        margin: 20px auto;
+        transition: opacity 1s ease-in-out;
+      }
+      #resume-link {
+        display: block;
+        width: max-content;
+        margin: 31rem auto 0 7rem;
+        z-index: 1000;
+      }
+      #resume-link:hover {
+        text-decoration: underline;
+      }
+
+      .typing-text {
+        display: inline-block;
+        color: white;
+        font-family: 'Bungee Hairline', sans-serif;
+        font-size: 20px;
+        font-weight: bold;
+        white-space: nowrap;
+        overflow: hidden;
+        border-right: 2px solid rgba(255, 255, 255, 0.75);
+        animation: blink-caret 0.75s step-end infinite;
+      }
+
+      a {
+        color: #e0b3ff;
+        text-decoration: none;
+      }
+      a:hover {
+        color: #fff;
+        text-decoration: underline;
+      }
+
+      @keyframes blink-caret {
+        50% {
+          border-color: transparent;
+        }
+      }
+      canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+      }
+      footer {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+      }
+      .contactMe {
+        color: rgb(221, 221, 221);
+        margin-top: 31rem;
+        margin-right: 8rem;
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <section id="intro-section">
+      <header id="header">
+        <p
+          style="
+            color: #fffffb;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgb(158, 129, 211), 0 0 10px rgb(158, 129, 211),
+              0 0 20px rgb(158, 129, 211), 0 0 40px rgb(122, 77, 205);
+          "
+        >
+          Hire Me
+        </p>
+        <h3>HELLO! I'M DISHA</h3>
+        <button
+          onclick="location.href='about.html'"
+          id="timeline-btn"
+          style="
+            color: #fffffed8;
+            font-size: 26px;
+            font-weight: 800;
+            cursor: pointer;
+            border: none;
+            background-color: transparent;
+            text-shadow: 0 0 5px rgb(158, 129, 211), 0 0 10px rgb(158, 129, 211),
+              0 0 20px rgb(158, 129, 211), 0 0 40px rgb(122, 77, 205);
+            font-family: 'Bungee Hairline', sans-serif;
+          "
+        >
+          See my timeline
+        </button>
+      </header>
+      <footer>
+        <a
+          id="resume-link"
+          href="https://drive.google.com/file/d/1nl0Q0oZV_wOXj3TpNqBMR8ma2jAeCotF/view?usp=drive_link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div id="typing-text" class="typing-text"></div>
+        </a>
+        <div class="contactMe">
+          <i class="fa-brands fa-github fa-2x"></i>
+          <i class="fa-brands fa-linkedin fa-2x"></i>
+          <i class="fa-solid fa-at fa-2x"></i>
+        </div>
+      </footer>
+    </section>
+    <script>
+      let scene, camera, renderer;
+      let particles, sphereParticles, faceParticles;
+      let zoomedIn = false;
+
+      function initScene() {
+        scene = new THREE.Scene();
+        camera = new THREE.PerspectiveCamera(
+          75,
+          window.innerWidth / window.innerHeight,
+          0.1,
+          1000
+        );
+        camera.position.z = 5;
+
+        renderer = new THREE.WebGLRenderer({ alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        createBackgroundParticles();
+        createSphereParticles();
+        createTexturedSphere();
+        createBlurredMovingDots();
+        animate();
+      }
+
+      function createBlurredMovingDots() {
+        const count = 300;
+        const positions = new Float32Array(count * 3);
+        const colors = [];
+
+        for (let i = 0; i < count * 3; i += 3) {
+          positions[i] = (Math.random() - 0.5) * 20;
+          positions[i + 1] = (Math.random() - 0.5) * 10;
+          positions[i + 2] = (Math.random() - 0.5) * 20;
+
+          // Randomly assign pink or blue
+          const color =
+            Math.random() > 0.5
+              ? new THREE.Color(0xff69b4)
+              : new THREE.Color(0x87cefa);
+          colors.push(color.r, color.g, color.b);
+        }
+
+        const geometry = new THREE.BufferGeometry();
+        geometry.setAttribute(
+          'position',
+          new THREE.BufferAttribute(positions, 3)
+        );
+        geometry.setAttribute(
+          'color',
+          new THREE.BufferAttribute(new Float32Array(colors), 3)
+        );
+
+        const material = new THREE.PointsMaterial({
+          size: 0.1,
+          vertexColors: true,
+          transparent: true,
+          opacity: 0.4,
+          blending: THREE.AdditiveBlending,
+        });
+
+        const points = new THREE.Points(geometry, material);
+        scene.add(points);
+
+        // Animate blur points too
+        function animateDots() {
+          requestAnimationFrame(animateDots);
+          points.rotation.y += 0.0008;
+        }
+
+        animateDots();
+      }
+
+      function createBackgroundParticles() {
+        const numParticles = 5000;
+        const positions = new Float32Array(numParticles * 3);
+        for (let i = 0; i < numParticles * 3; i += 3) {
+          positions[i] = (Math.random() - 0.5) * 10;
+          positions[i + 1] = (Math.random() - 0.5) * 0.5;
+          positions[i + 2] = (Math.random() - 0.5) * 10;
+        }
+
+        const geometry = new THREE.BufferGeometry();
+        geometry.setAttribute(
+          'position',
+          new THREE.BufferAttribute(positions, 3)
+        );
+        const material = new THREE.PointsMaterial({
+          size: 0.007,
+          color: 0xffd700,
+          transparent: true,
+          depthWrite: false,
+          blending: THREE.AdditiveBlending,
+        });
+        particles = new THREE.Points(geometry, material);
+        scene.add(particles);
+      }
+
+      function createTexturedSphere() {
+        const textureLoader = new THREE.TextureLoader();
+        const texture = textureLoader.load('blueplanet.jpeg'); // Replace with your image path
+
+        const geometry = new THREE.SphereGeometry(1, 32, 32); // Sphere radius 0.5, adjust as needed
+        const material = new THREE.MeshStandardMaterial({
+          map: texture,
+          roughness: 0.5,
+          metalness: 0.1,
+        });
+
+        const sphere = new THREE.Mesh(geometry, material);
+        sphere.position.set(0, 0, 0); // Center the sphere
+        scene.add(sphere);
+        const light = new THREE.PointLight(0xffffff, 1, 100);
+        light.position.set(5, 5, 5);
+        scene.add(light);
+      }
+
+      function createSphereParticles() {
+        const numParticles = 400;
+        const positions = new Float32Array(numParticles * 3);
+        const radius = 1.2;
+        for (let i = 0; i < numParticles * 3; i += 3) {
+          let r = Math.cbrt(Math.random()) * radius;
+          let theta = Math.random() * Math.PI * 2;
+          let phi = Math.acos(2 * Math.random() - 1);
+          positions[i] = r * Math.sin(phi) * Math.cos(theta);
+          positions[i + 1] = r * Math.sin(phi) * Math.sin(theta);
+          positions[i + 2] = r * Math.cos(phi);
+        }
+        const geometry = new THREE.BufferGeometry();
+        geometry.setAttribute(
+          'position',
+          new THREE.BufferAttribute(positions, 3)
+        );
+        const material = new THREE.PointsMaterial({
+          size: 0.005,
+          color: 0xffffff,
+          transparent: true,
+        });
+        sphereParticles = new THREE.Points(geometry, material);
+        scene.add(sphereParticles);
+      }
+
+      function animate() {
+        requestAnimationFrame(animate);
+        if (!zoomedIn) {
+          particles.rotation.y += 0.001;
+          sphereParticles.rotation.y += 0.01;
+        }
+        renderer.render(scene, camera);
+      }
+
+      initScene();
+      function typeWriter(text, i = 0) {
+        const typingElement = document.getElementById('typing-text');
+        if (i < text.length) {
+          typingElement.textContent += text.charAt(i);
+          setTimeout(() => typeWriter(text, i + 1), 100);
+        }
+      }
+      document.getElementById('typing-text').textContent = '';
+      typeWriter('Download my resume ');
+      const button = document.getElementById('timeline-btn');
+
+      button.addEventListener('click', () => {
+        document.body.classList.add('transition-out'); // start transition
+        setTimeout(() => {
+          window.location.href = 'about.html';
+        }, 700); // match transition duration
+      });
+
+      // Optional: add fade-in when new page loads
+      window.addEventListener('DOMContentLoaded', () => {
+        document.body.classList.add('transition-in');
+      });
+    </script>
+  </body>
+</html>
