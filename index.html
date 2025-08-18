@@ -372,17 +372,6 @@
       window.addEventListener('DOMContentLoaded', () => {
         document.body.classList.add('transition-in');
       });
-
-      const copyDiv = document.getElementById('copyDiv');
-      copyDiv.addEventListener('click', () => {
-        const text = copyDiv.innerText; // get div text
-        navigator.clipboard.writeText(text).then(() => {
-          copyDiv.innerText = '✅ Copied!';
-          setTimeout(() => {
-            copyDiv.innerText = text;
-          }, 1500);
-        });
-      });
     </script>
   </body>
 </html>

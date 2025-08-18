@@ -9,10 +9,19 @@
     href="https://fonts.googleapis.com/css2?family=Bungee+Hairline&display=swap"
     rel="stylesheet"
   />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet"
+  />
+
   <head>
     <meta charset="UTF-8" />
     <title>Disha Dora</title>
     <style>
+      .montserrat-font {
+        font-family: 'Montserrat', sans-serif;
+        font-optical-sizing: auto;
+      }
       body {
         font-family: sans-serif;
         background: #18182c;
@@ -80,11 +89,11 @@
         text-align: start;
         padding: 20px;
         border-radius: 12px;
-        border: rgba(212, 212, 212, 0.233) 2px solid;
+        /* border: rgba(212, 212, 212, 0.233) 2px solid; */
         box-shadow: 0 4px 16px rgba(21, 21, 21, 0.763);
         transition: all 0.7s cubic-bezier(0.15, 0.75, 0.5, 1.2);
-        background: linear-gradient(135deg, #554fc776 50%, #09013066);
-        backdrop-filter: blur(10px); /* blur whatever is behind */
+        background: radial-gradient(circle, #554fc776 40%, #b4b3bb66);
+        backdrop-filter: blur(15px); /* blur whatever is behind */
         -webkit-backdrop-filter: blur(10px); /* for Safari */
         white-space: nowrap;
         opacity: 0;
@@ -170,7 +179,7 @@
         align-items: center;
         justify-content: center;
         gap: 2rem;
-        font-family: 'Bungee Hairline';
+        font-family: 'Bungee Hairline', sans-serif;
         font-weight: 1000;
       }
       .secondMaj > div {
@@ -192,8 +201,9 @@
         box-shadow: 0 5px 8px rgba(0, 0, 0, 0.625);
       }
       .para {
-        font-weight: 800;
-        font-size: 15px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 200;
+        font-size: 20px;
       }
       .contact-section {
         width: 90%;
@@ -262,6 +272,24 @@
       #contact-form button:hover {
         box-shadow: 0 2px 15px rgba(203, 203, 203, 0.6);
       }
+      ::-webkit-scrollbar {
+        width: 10px; /* width of the vertical scrollbar */
+      }
+
+      ::-webkit-scrollbar-track {
+        background: rgb(17, 15, 24); /* background of the scrollbar track */
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: linear-gradient(
+          180deg,
+          #5585af,
+          #0e5a5e
+        ); /* scrollbar color */
+        border-radius: 10px;
+        border: 2px solid transparent; /* space around thumb */
+        background-clip: content-box; /* makes border visible */
+      }
     </style>
   </head>
   <body>
@@ -299,7 +327,12 @@
         </div>
         <div class="secondMaj">
           <div class="second1">
-            <span style="font-size: 28px; font-weight: 900"
+            <span
+              style="
+                font-size: 28px;
+                font-weight: bold;
+                color: rgba(255, 255, 255, 0.729);
+              "
               ><i class="fa-solid fa-graduation-cap"></i><br />Currently<br />
               student at<br
             /></span>
@@ -308,8 +341,13 @@
             2022-2026
           </div>
           <div class="second2">
-            <span style="font-size: 28px; font-weight: 900"
-              ><i class="fa-solid fa-code-fork"></i><br />INTERN<br
+            <span
+              style="
+                font-size: 28px;
+                font-weight: bold;
+                color: rgba(245, 245, 245, 0.729);
+              "
+              ><i class="fa-solid fa-code-fork"></i><span> </span>INTERN<br
             /></span>
             at ODISOFT Technology<br />June'25 - August'25
           </div>
@@ -671,6 +709,8 @@
           setDraggerPosition(getDotX(idx));
         });
       });
+
+      //_----------------------------------------------------
     </script>
   </body>
 </html>
