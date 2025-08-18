@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>WEBBIE</title>
+    <title>Disha Dora</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -112,12 +112,30 @@
         justify-content: space-around;
       }
       .contactMe {
-        color: rgb(221, 221, 221);
-        margin-top: 31rem;
+        color: rgb(255, 228, 246);
+        margin-top: 24rem;
         margin-right: 8rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+      .contMeI {
         display: flex;
         flex-direction: row;
         gap: 2rem;
+        margin-top: 0.5rem;
+      }
+      .contMe {
+        font-size: 20px;
+        font-family: 'Bungee Hairline';
+        font-weight: 900;
+      }
+      .contMeI i {
+        cursor: pointer;
+        transition: transform 0.3s ease, color 0.3s ease;
+      }
+      .contMeI i:hover {
+        transform: translateY(-50%);
       }
     </style>
   </head>
@@ -163,9 +181,18 @@
           <div id="typing-text" class="typing-text"></div>
         </a>
         <div class="contactMe">
-          <i class="fa-brands fa-github fa-2x"></i>
-          <i class="fa-brands fa-linkedin fa-2x"></i>
-          <i class="fa-solid fa-at fa-2x"></i>
+          <div class="contMe">Get in touch</div>
+          <div class="contMeI">
+            <a href="https://github.com/dishaadora" target="_blank">
+              <i class="fa-brands fa-github fa-2x"></i>
+            </a>
+            <a href="www.linkedin.com/in/disha-dora-47b59925b" target="_blank">
+              <i class="fa-brands fa-linkedin fa-2x"></i>
+            </a>
+            <a href="mailto:dishaadora@gmail.com" target="_blank">
+              <i class="fa-solid fa-at fa-2x"></i>
+            </a>
+          </div>
         </div>
       </footer>
     </section>
@@ -344,6 +371,17 @@
       // Optional: add fade-in when new page loads
       window.addEventListener('DOMContentLoaded', () => {
         document.body.classList.add('transition-in');
+      });
+
+      const copyDiv = document.getElementById('copyDiv');
+      copyDiv.addEventListener('click', () => {
+        const text = copyDiv.innerText; // get div text
+        navigator.clipboard.writeText(text).then(() => {
+          copyDiv.innerText = '✅ Copied!';
+          setTimeout(() => {
+            copyDiv.innerText = text;
+          }, 1500);
+        });
       });
     </script>
   </body>
