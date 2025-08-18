@@ -68,10 +68,10 @@
       }
       .popup {
         position: absolute;
-        top: -300px;
+        top: -350px;
         left: 50%;
-        height: 15rem;
-        width: 15rem;
+        height: 17rem;
+        width: 17rem;
         transform: translateX(-50%);
         color: #1f114b;
         font-family: 'Bungee Hairline', sans-serif;
@@ -191,11 +191,6 @@
         background: linear-gradient(135deg, #3068d6cd 75%, #fdab54a2);
         box-shadow: 0 5px 8px rgba(0, 0, 0, 0.625);
       }
-      .para12 {
-        font-weight: 600;
-        font-size: 20px;
-        color: white;
-      }
       .para {
         font-weight: 800;
         font-size: 15px;
@@ -286,11 +281,9 @@
             👋 HI I'm Disha Dora
           </h1>
           <p class="para11">
-            An aspiring Software Engineer with a mind full of blooms.
-          </p>
-          <p class="para12">
-            I have been a learner at heart and have curated my ideas into
-            reality through Tech.
+            An aspiring Software Engineer with a mind full of blooms.<br />I
+            have been a learner at heart and have curated my ideas into reality
+            through Tech.
           </p>
           <p class="para">
             <br />I specialize in building scalable web applications using
@@ -600,7 +593,7 @@
         const popup = document.createElement('div');
         popup.className = 'popup';
         popup.innerHTML = `<div style="font-weight:1000;font-size:1.2rem; color:white;">${dotLabels[i].heading}</div>
-                   <div style="font-size:1rem;font-weight:800;margin-top:5px; color:white;">${dotLabels[i].paragraph}</div>`;
+                   <div style="font-size:1rem;font-weight:800;margin-top:1rem; color:white;tex-align:center;">${dotLabels[i].paragraph}</div>`;
         dot.appendChild(popup);
         popups.push(popup);
       }
