@@ -288,6 +288,44 @@
         border: 2px solid transparent; /* space around thumb */
         background-clip: content-box; /* makes border visible */
       }
+      .listProj {
+        background-color: #18182c49;
+        backdrop-filter: blur(15px);
+        box-shadow: 0 5px 15px black;
+        font-family: 'Bungee Hairline', sans-serif;
+        font-size: 4rem;
+        text-align: center;
+      }
+      .rowProj {
+        margin-top: 4rem;
+        display: flex;
+        flex-wrap: wrap; /* Allow multiple rows */
+        justify-content: center; /* Center the divs horizontally */
+        align-items: stretch; /* Make all divs equal height */
+        gap: 2rem; /* Space between cards */
+        width: 100%;
+        max-width: 90rem; /* Limit overall container width */
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .rowProj > div {
+        background: transparent;
+        box-shadow: 0 5px 8px rgba(0, 0, 0, 0.625);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        border-radius: 25px;
+        border: 2px solid rgba(164, 164, 164, 0.326);
+        padding: 1.5rem;
+        font-family: 'Bungee Hairline';
+        box-sizing: border-box;
+        min-height: 15rem;
+        transition: transform 0.3s ease;
+      }
+
+      .rowProj > div:hover {
+        transform: translateY(-8px);
+      }
       /* ============================= */
       /* 1. Small Desktops / Laptops  */
       /* ============================= */
@@ -325,6 +363,10 @@
         .firstMaj,
         .secondMaj > div {
           padding: 1.5rem;
+        }
+        .rowProj > div {
+          flex: 0 1 calc(50% - 2rem); /* 2 cards per row */
+          max-width: 28rem;
         }
       }
 
@@ -366,6 +408,10 @@
         .secondMaj > div {
           padding: 2rem;
         }
+        .rowProj > div {
+          flex: 0 1 calc(50% - 2rem); /* 2 cards per row */
+          max-width: 30rem;
+        }
       }
 
       /* ============================= */
@@ -405,6 +451,10 @@
         .firstMaj,
         .secondMaj > div {
           padding: 2rem;
+        }
+        .rowProj > div {
+          flex: 0 1 calc(33.33% - 2rem); /* 3 cards per row */
+          max-width: 28rem;
         }
       }
 
@@ -446,6 +496,89 @@
         .secondMaj > div {
           padding: 3rem;
         }
+        .rowProj > div {
+          flex: 0 1 calc(25% - 2rem); /* 4 cards per row */
+          max-width: 26rem;
+        }
+      }
+      @media (min-width: 768px) and (max-width: 1023px) {
+        /* Timeline adjustments */
+        .timeline-wrapper {
+          width: 90%;
+          margin-left: auto;
+          margin-right: auto;
+          margin-top: 16rem;
+        }
+
+        .popup {
+          width: 11rem;
+          height: 11rem;
+          font-size: 12px;
+          top: -220px;
+        }
+
+        .expTime {
+          font-size: 2rem;
+          width: 22rem;
+          text-align: center;
+        }
+
+        /* About section adjustments */
+        .aboutMe {
+          flex-direction: column; /* Stack vertically */
+          margin-top: 5rem;
+          padding: 2rem;
+          gap: 2rem;
+        }
+
+        .twomajor {
+          flex-direction: column;
+          align-items: center;
+          gap: 2rem;
+          width: 100%;
+        }
+
+        .firstMaj,
+        .secondMaj > div {
+          width: 90%;
+          padding: 1.5rem;
+        }
+
+        /* Project cards responsive layout */
+        .rowProj {
+          max-width: 100%;
+          padding: 0 1rem;
+          gap: 1.5rem;
+          justify-content: center;
+        }
+
+        .rowProj > div {
+          flex: 0 1 calc(50% - 1.5rem); /* 2 cards per row */
+          max-width: 22rem;
+          padding: 1rem;
+          min-height: 13rem;
+        }
+
+        /* Contact form optimization */
+        .contact-section {
+          width: 90%;
+          padding: 20px;
+        }
+
+        .contact-section h2 {
+          font-size: 26px;
+        }
+
+        #contact-form input,
+        #contact-form textarea {
+          font-size: 14px;
+          padding: 12px;
+        }
+
+        #contact-form button {
+          font-size: 16px;
+          padding: 12px;
+        }
       }
     </style>
   </head>
@@ -475,8 +608,10 @@
             <b>React, Node.js, Java, Vanilla JS, HTML, CSS, </b>
             <b>TypeScript</b>, and modern development technologies. I thrive on
             turning complex<br />problems into elegant solutions that users
-            love.<br />Beyond work, I love exploring emerging technologies,
-            contributing to <b>open-source</b><br />
+            love. I am currently researching on MCP and Vector Databases and
+            looking forward to collaborate with Devs fromm around the globe<br />Beyond
+            work, I love exploring emerging technologies, contributing to
+            <b>open-source</b><br />
             projects, and mentoring aspiring developers. I believe in continuous
             learning and<br />staying at the forefront of technological
             innovation.
@@ -508,6 +643,56 @@
             /></span>
             at ODISOFT Technology<br />June'25 - August'25
           </div>
+        </div>
+      </div>
+    </div>
+    <p class="listProj">Projects</p>
+    <div class="rowProj">
+      <!-- Project 1 -->
+      <div class="proj1">
+        <div class="proj1text">
+          <h2 style="font-size: 25px; font-weight: 800; margin-bottom: 10px">
+            Personal Portfolio
+          </h2>
+          <p style="font-size: 16px; font-weight: 500; line-height: 1.5">
+            My personal portfolio is designed to showcase my skills, projects,
+            and achievements in an interactive and visually engaging way. It
+            features navigation with sections like About Me, Projects, Skills
+            and Contact.
+          </p>
+          <a href="#">See Here</a>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="proj2">
+        <div class="proj2text">
+          <h2 style="font-size: 25px; font-weight: 800; margin-bottom: 10px">
+            Personal Portfolio
+          </h2>
+          <p style="font-size: 16px; font-weight: 500; line-height: 1.5">
+            My personal portfolio is designed to showcase my skills, projects,
+            and achievements in an interactive and visually engaging way. It
+            features navigation with sections like About Me, Projects, Skills
+            and Contact.
+          </p>
+          <a href="#">See Here</a>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="proj3">
+        <div class="proj3text">
+          <h2 style="font-size: 25px; font-weight: 800; margin-bottom: 10px">
+            Personal Portfolio
+          </h2>
+          <p style="font-size: 16px; font-weight: 500; line-height: 1.5">
+            My personal portfolio is designed to showcase my skills, projects,
+            and achievements in an interactive and visually engaging way. It
+            features navigation with sections like About Me, Projects, Skills
+            and Contact.
+          </p>
+          <a href="#">See Here</a>
         </div>
       </div>
     </div>

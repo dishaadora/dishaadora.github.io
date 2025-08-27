@@ -235,13 +235,64 @@
           gap: 2.5rem;
         }
       }
+      /* ============================= */
+      /* 5. Tablets (Portrait & Landscape) */
+      /* ============================= */
+      @media (min-width: 768px) and (max-width: 1023px) {
+        /* Header adjustments */
+        header {
+          font-size: 20px;
+          flex-direction: column; /* Stack items vertically */
+          gap: 1rem;
+          text-align: center;
+          margin: 15px auto;
+        }
+
+        /* Resume button positioning */
+        #resume-link {
+          margin: 15rem auto 0 auto; /* Centered on tablets */
+          font-size: 16px;
+        }
+
+        /* Typing text scaling */
+        .typing-text {
+          font-size: 16px;
+          display: block;
+          text-align: center;
+          margin: 10px auto;
+        }
+
+        /* Contact section positioning */
+        .contactMe {
+          margin-top: 15rem;
+          margin-right: 0;
+          justify-content: center;
+          flex-wrap: wrap; /* Avoid overflow */
+          gap: 1.2rem;
+          font-size: 14px;
+        }
+
+        /* Footer adjustments for tablets */
+        footer {
+          flex-direction: column;
+          align-items: center;
+          gap: 1rem;
+          margin-top: 2rem;
+        }
+
+        /* Make canvas scale properly on tablets */
+        canvas {
+          width: 100%;
+          height: 100%;
+        }
+      }
     </style>
   </head>
   <body>
     <section id="intro-section">
       <header id="header">
         <a
-          href="https://www.linkedin.com/in/yourprofile/"
+          href="www.linkedin.com/in/disha-dora-47b59925b"
           target="_blank"
           class="hire-btn"
           ><p
