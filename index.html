@@ -139,6 +139,102 @@
       .contMeI i:hover {
         transform: translateY(-50%);
       }
+      /* ============================= */
+      /* 1. Small Desktops / Laptops  */
+      /* ============================= */
+      @media (min-width: 1024px) and (max-width: 1280px) {
+        header {
+          font-size: 24px;
+          gap: 1rem;
+          flex-direction: row;
+        }
+
+        #resume-link {
+          margin: 20rem auto 0 4rem;
+        }
+
+        .typing-text {
+          font-size: 18px;
+        }
+
+        .contactMe {
+          margin-top: 20rem;
+          margin-right: 4rem;
+          gap: 1rem;
+        }
+      }
+
+      /* ============================= */
+      /* 2. Medium Desktops           */
+      /* ============================= */
+      @media (min-width: 1281px) and (max-width: 1440px) {
+        header {
+          font-size: 28px;
+          gap: 2rem;
+        }
+
+        #resume-link {
+          margin: 25rem auto 0 5rem;
+        }
+
+        .typing-text {
+          font-size: 20px;
+        }
+
+        .contactMe {
+          margin-top: 25rem;
+          margin-right: 6rem;
+          gap: 1.5rem;
+        }
+      }
+
+      /* ============================= */
+      /* 3. Large Desktops           */
+      /* ============================= */
+      @media (min-width: 1441px) and (max-width: 1920px) {
+        header {
+          font-size: 32px;
+          gap: 3rem;
+        }
+
+        #resume-link {
+          margin: 28rem auto 0 7rem;
+        }
+
+        .typing-text {
+          font-size: 22px;
+        }
+
+        .contactMe {
+          margin-top: 28rem;
+          margin-right: 7rem;
+          gap: 2rem;
+        }
+      }
+
+      /* ============================= */
+      /* 4. Ultra-Wide Screens       */
+      /* ============================= */
+      @media (min-width: 1921px) {
+        header {
+          font-size: 36px;
+          gap: 4rem;
+        }
+
+        #resume-link {
+          margin: 32rem auto 0 10rem;
+        }
+
+        .typing-text {
+          font-size: 24px;
+        }
+
+        .contactMe {
+          margin-top: 32rem;
+          margin-right: 10rem;
+          gap: 2.5rem;
+        }
+      }
     </style>
   </head>
   <body>
@@ -380,6 +476,54 @@
       window.addEventListener('DOMContentLoaded', () => {
         document.body.classList.add('transition-in');
       });
+      window.addEventListener('resize', () => {
+        // Update camera aspect ratio
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+
+        // Resize the renderer to match the screen size
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+        // Adjust sphere size based on desktop screen width
+        if (window.innerWidth >= 1920) {
+          // Ultra-wide desktops
+          scaleSphereAndParticles(1.5, 1.5);
+        } else if (window.innerWidth >= 1440) {
+          // Large desktops
+          scaleSphereAndParticles(1.3, 1.3);
+        } else if (window.innerWidth >= 1280) {
+          // Medium desktops
+          scaleSphereAndParticles(1.1, 1.1);
+        } else {
+          // Small desktops
+          scaleSphereAndParticles(1, 1);
+        }
+      });
+
+      // Function to dynamically scale sphere & particle systems
+      function scaleSphereAndParticles(sphereScale, particleScale) {
+        // Scale the main textured sphere
+        const sphere = scene.children.find(
+          (obj) => obj.isMesh && obj.geometry.type === 'SphereGeometry'
+        );
+        if (sphere) {
+          sphere.scale.set(sphereScale, sphereScale, sphereScale);
+        }
+
+        // Scale background particles
+        if (particles) {
+          particles.scale.set(particleScale, particleScale, particleScale);
+        }
+
+        // Scale blurred moving dots
+        if (sphereParticles) {
+          sphereParticles.scale.set(
+            particleScale,
+            particleScale,
+            particleScale
+          );
+        }
+      }
     </script>
   </body>
 </html>
