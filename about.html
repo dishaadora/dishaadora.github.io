@@ -315,7 +315,6 @@
         backdrop-filter: blur(15px);
         -webkit-backdrop-filter: blur(15px);
         border-radius: 25px;
-        border: 2px solid rgba(164, 164, 164, 0.326);
         padding: 1.5rem;
         font-family: 'Bungee Hairline';
         box-sizing: border-box;
@@ -325,6 +324,27 @@
 
       .rowProj > div:hover {
         transform: translateY(-8px);
+      }
+      .proj3text a {
+        font-size: medium;
+        color: rgb(255, 255, 255);
+        text-decoration: underline;
+        text-decoration-thickness: 1.2px;
+        text-underline-offset: 2px;
+      }
+      .proj1text a {
+        font-size: medium;
+        color: rgb(255, 255, 255);
+        text-decoration: underline;
+        text-decoration-thickness: 1.2px;
+        text-underline-offset: 2px;
+      }
+      .proj2text a {
+        font-size: medium;
+        color: rgb(255, 255, 255);
+        text-decoration: underline;
+        text-decoration-thickness: 1.2px;
+        text-underline-offset: 2px;
       }
       /* ============================= */
       /* 1. Small Desktops / Laptops  */
@@ -367,6 +387,10 @@
         .rowProj > div {
           flex: 0 1 calc(50% - 2rem); /* 2 cards per row */
           max-width: 28rem;
+        }
+        .listProj {
+          font-size: 2.8rem;
+          padding: 1.5rem;
         }
       }
 
@@ -412,6 +436,10 @@
           flex: 0 1 calc(50% - 2rem); /* 2 cards per row */
           max-width: 30rem;
         }
+        .listProj {
+          font-size: 3.2rem;
+          padding: 1.8rem;
+        }
       }
 
       /* ============================= */
@@ -455,6 +483,10 @@
         .rowProj > div {
           flex: 0 1 calc(33.33% - 2rem); /* 3 cards per row */
           max-width: 28rem;
+        }
+        .listProj {
+          font-size: 3.5rem; /* Slightly smaller */
+          padding: 2rem;
         }
       }
 
@@ -579,6 +611,10 @@
           font-size: 16px;
           padding: 12px;
         }
+        .listProj {
+          font-size: 2.2rem; /* Scales down nicely */
+          padding: 1rem;
+        }
       }
     </style>
   </head>
@@ -652,15 +688,16 @@
       <div class="proj1">
         <div class="proj1text">
           <h2 style="font-size: 25px; font-weight: 800; margin-bottom: 10px">
-            Personal Portfolio
+            MCP Server
           </h2>
           <p style="font-size: 16px; font-weight: 500; line-height: 1.5">
-            My personal portfolio is designed to showcase my skills, projects,
-            and achievements in an interactive and visually engaging way. It
-            features navigation with sections like About Me, Projects, Skills
-            and Contact.
+            The Model Context Protocol (MCP) server acts as a central hub that
+            connects multiple data sources and tools into a single endpoint for
+            an AI model. By integrating APIs like Google Drive, Slack and
+            Notion. This MCP server enables an AI assistant 'Claude' to
+            seamlessly fetch, process, and update information across platforms.
           </p>
-          <a href="#">See Here</a>
+          <a href="#">Still Building!</a>
         </div>
       </div>
 
@@ -676,7 +713,7 @@
             features navigation with sections like About Me, Projects, Skills
             and Contact.
           </p>
-          <a href="#">See Here</a>
+          <a href="dishaadora.github.io">See Here</a>
         </div>
       </div>
 
@@ -684,15 +721,13 @@
       <div class="proj3">
         <div class="proj3text">
           <h2 style="font-size: 25px; font-weight: 800; margin-bottom: 10px">
-            Personal Portfolio
+            Front-End Project
           </h2>
           <p style="font-size: 16px; font-weight: 500; line-height: 1.5">
-            My personal portfolio is designed to showcase my skills, projects,
-            and achievements in an interactive and visually engaging way. It
-            features navigation with sections like About Me, Projects, Skills
-            and Contact.
+            Cloned a website's front-end using React and Vite as a part of my
+            Internship experience
           </p>
-          <a href="#">See Here</a>
+          <a href="dishaadora.github.io/flyandclaim">See Here</a>
         </div>
       </div>
     </div>
