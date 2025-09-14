@@ -62,17 +62,17 @@
         top: 22px;
         width: 20px;
         height: 20px;
-        background: #8cd5fc;
+        background: #2b0142;
         border-radius: 50%;
-        border: 4px solid #ffffff83;
+        border: 4px solid #2b293283;
         transform: translateX(-50%);
         cursor: pointer;
         z-index: 2;
         box-shadow: 0 7px 16px rgb(255, 255, 255);
       }
       .dot.active {
-        background: #ffffff;
-        border-color: #fff;
+        background: #6a21c8;
+  border-color: #ba7cf4;
         box-shadow: 0 4px 30px rgb(255, 255, 255);
       }
       .popup {
@@ -113,7 +113,7 @@
         height: 28px;
         background: #ffffff27;
         border-radius: 50%;
-        border: 4px solid #fff;
+        border: 4px solid #e3b4fe;
         box-shadow: 0 2px 8px #0002;
         transform: translateX(-50%);
         cursor: grab;
@@ -858,7 +858,7 @@
         createSphereParticles();
         createTexturedSphere();
         createBlurredMovingDots();
-        createRings();
+        //createRings();
         animate();
       }
 
@@ -979,64 +979,53 @@
         sphereParticles = new THREE.Points(geometry, material);
         scene.add(sphereParticles);
       }
-      function createRings() {
-        const torusGeometry = new THREE.TorusGeometry(8.75, 0.01, 8, 100);
-        const torusMaterial = new THREE.MeshStandardMaterial({
-          color: 0x0e0e2e,
-          metalness: 0.8,
-          roughness: 0.15,
-          emissive: 0xfffffed8,
-          transparent: true, // allow the material to be transparent
-          opacity: 0.4,
-        });
-        torus = new THREE.Mesh(torusGeometry, torusMaterial);
-        torus.rotation.z = Math.PI / 4;
-        torus.position.set(0, 0, 0);
-        // Optional: for a "tilted" look
-        // torus.rotation.x = Math.PI / 3; // 60 degrees
-        // torus.rotation.z = Math.PI / 8;
+      // function createRings() {
+      //   const torusGeometry = new THREE.TorusGeometry(8.75, 0.01, 8, 100);
+      //   const torusMaterial = new THREE.MeshStandardMaterial({
+      //     color: 0x0e0e2e,
+      //     metalness: 0.8,
+      //     roughness: 0.15,
+      //     emissive: 0xfffffed8,
+      //     transparent: true, // allow the material to be transparent
+      //     opacity: 0.4,
+      //   });
+      //   torus = new THREE.Mesh(torusGeometry, torusMaterial);
+      //   torus.rotation.z = Math.PI / 4;
+      //   torus.position.set(0, 0, 0);
+      //   // Optional: for a "tilted" look
+      //   // torus.rotation.x = Math.PI / 3; // 60 degrees
+      //   // torus.rotation.z = Math.PI / 8;
 
-        // Add to scene
-        const torusGeometry1 = new THREE.TorusGeometry(7.75, 0.01, 8, 100);
-        const torusMaterial1 = new THREE.MeshStandardMaterial({
-          color: 0x0e0e2e,
-          metalness: 0.8,
-          roughness: 0.15,
-          emissive: 0xfffffed8,
-          transparent: true, // allow the material to be transparent
-          opacity: 0.4,
-        });
-        torus1 = new THREE.Mesh(torusGeometry, torusMaterial);
-        torus1.rotation.z = Math.PI / 4;
-        torus1.rotation.x = Math.PI / 4;
-        torus1.rotation.y = Math.PI / 4;
-        torus1.position.set(0, 0, 0);
-        scene.add(torus);
-        scene.add(torus1);
-        console.log('Torus created:', torus);
-      }
+      //   // Add to scene
+      //   const torusGeometry1 = new THREE.TorusGeometry(7.75, 0.01, 8, 100);
+      //   const torusMaterial1 = new THREE.MeshStandardMaterial({
+      //     color: 0x0e0e2e,
+      //     metalness: 0.8,
+      //     roughness: 0.15,
+      //     emissive: 0xfffffed8,
+      //     transparent: true, // allow the material to be transparent
+      //     opacity: 0.4,
+      //   });
+      //   torus1 = new THREE.Mesh(torusGeometry, torusMaterial);
+      //   torus1.rotation.z = Math.PI / 4;
+      //   torus1.rotation.x = Math.PI / 4;
+      //   torus1.rotation.y = Math.PI / 4;
+      //   torus1.position.set(0, 0, 0);
+      //   scene.add(torus);
+      //   scene.add(torus1);
+      //   console.log('Torus created:', torus);
+      // }
 
       function animate() {
         requestAnimationFrame(animate);
         if (!zoomedIn) {
           particles.rotation.y += 0.001;
           sphereParticles.rotation.y += 0.01;
-          if (torus) {
-            torus.rotation.y += 0.0025;
-            torus.rotation.x += 0.0025;
-            torus.rotation.z += 0.0025;
-          }
-          if (torus1) {
-            torus1.rotation.y += 0.0025;
-            torus1.rotation.x += 0.0025;
-            torus1.rotation.z += 0.0025;
-          }
         }
         renderer.render(scene, camera);
       }
 
       initScene();
-      // === CONFIGURATION ===
       const dotLabels = [
         {
           heading: 'DEC 2024 -<br/>Volunteered At TCD',
@@ -1064,7 +1053,6 @@
             'My personal portfolio <br/>is designed to showcase<br/>my skills, projects, and <br/>achievements in an<br/>interactive and visually<br/>engaging way. It features<br/>navigation with sections<br/>like About Me, Projects,<br/>Skills and Contact.<br/><a href="dishaadora.github.io" style="text-decoration:underline; color:white;">Link</a>',
         },
       ];
-      // === END CONFIG ===
 
       const wrapper = document.querySelector('.timeline-wrapper');
       const timelineBar = wrapper.querySelector('.timeline-bar');
