@@ -200,7 +200,7 @@
       }
       .para {
         font-family: 'Bungee Hairline', sans-serif;
-        font-weight: 500;
+        font-weight: 800;
         font-size: 20px;
       }
       .contact-section {
@@ -698,7 +698,7 @@
             <br />I specialize in building scalable applications using
             <b>React, Node.js, Java, Vanilla JS, HTML, CSS, </b>
             <b>TypeScript</b>, and modern development technologies. I thrive on
-            turning complex<br />problems into elegant solutions that users
+            turning complex problems into elegant solutions that users
             love. I am currently researching on MCP and Vector Databases and
             looking forward to collaborate with Devs fromm around the globe<br />Beyond
             work, I love exploring emerging technologies, contributing to
@@ -716,8 +716,7 @@
                 font-weight: bold;
                 color: rgba(255, 255, 255, 0.729);
               "
-              ><i class="fa-solid fa-graduation-cap"></i><br />Currently<br />
-              student at<br
+              ><i class="fa-solid fa-graduation-cap"></i><br />studying in<br
             /></span>
             GITAM DEEMED TO BE<br />
             UNIVERSITY<br />
@@ -730,7 +729,7 @@
                 font-weight: bold;
                 color: rgba(245, 245, 245, 0.729);
               "
-              ><i class="fa-solid fa-code-fork"></i><span> </span>INTERN<br
+              ><i class="fa-solid fa-code-fork"></i><span> </span>INTERNED<br
             /></span>
             at ODISOFT Technology<br />June'25 - August'25<br/>
             <a href="https://drive.google.com/file/d/1EDA3xvzAOCyLHNoiwv-BbHzEuMHUBNSH/view?usp=sharing" style="color: white; margin-top: 1rem; text-underline-offset: 6px;">view</a>
@@ -939,7 +938,7 @@
         const textureLoader = new THREE.TextureLoader();
         const texture = textureLoader.load('blueplanet.jpeg'); // Replace with your image path
 
-        const geometry = new THREE.SphereGeometry(1, 32, 32); // Sphere radius 0.5, adjust as needed
+        const geometry = new THREE.SphereGeometry(1.45, 32, 32); // Sphere radius 0.5, adjust as needed
         const material = new THREE.MeshStandardMaterial({
           map: texture,
           roughness: 0.5,
@@ -979,42 +978,6 @@
         sphereParticles = new THREE.Points(geometry, material);
         scene.add(sphereParticles);
       }
-      // function createRings() {
-      //   const torusGeometry = new THREE.TorusGeometry(8.75, 0.01, 8, 100);
-      //   const torusMaterial = new THREE.MeshStandardMaterial({
-      //     color: 0x0e0e2e,
-      //     metalness: 0.8,
-      //     roughness: 0.15,
-      //     emissive: 0xfffffed8,
-      //     transparent: true, // allow the material to be transparent
-      //     opacity: 0.4,
-      //   });
-      //   torus = new THREE.Mesh(torusGeometry, torusMaterial);
-      //   torus.rotation.z = Math.PI / 4;
-      //   torus.position.set(0, 0, 0);
-      //   // Optional: for a "tilted" look
-      //   // torus.rotation.x = Math.PI / 3; // 60 degrees
-      //   // torus.rotation.z = Math.PI / 8;
-
-      //   // Add to scene
-      //   const torusGeometry1 = new THREE.TorusGeometry(7.75, 0.01, 8, 100);
-      //   const torusMaterial1 = new THREE.MeshStandardMaterial({
-      //     color: 0x0e0e2e,
-      //     metalness: 0.8,
-      //     roughness: 0.15,
-      //     emissive: 0xfffffed8,
-      //     transparent: true, // allow the material to be transparent
-      //     opacity: 0.4,
-      //   });
-      //   torus1 = new THREE.Mesh(torusGeometry, torusMaterial);
-      //   torus1.rotation.z = Math.PI / 4;
-      //   torus1.rotation.x = Math.PI / 4;
-      //   torus1.rotation.y = Math.PI / 4;
-      //   torus1.position.set(0, 0, 0);
-      //   scene.add(torus);
-      //   scene.add(torus1);
-      //   console.log('Torus created:', torus);
-      // }
 
       function animate() {
         requestAnimationFrame(animate);
@@ -1204,14 +1167,6 @@
         // Scale blurred dots (floating colorful particles)
         if (faceParticles) {
           faceParticles.scale.set(particleScale, particleScale, particleScale);
-        }
-
-        // Scale torus rings if they exist
-        if (torus) {
-          torus.scale.set(torusScale, torusScale, torusScale);
-        }
-        if (typeof torus1 !== 'undefined' && torus1) {
-          torus1.scale.set(torusScale, torusScale, torusScale);
         }
       }
     </script>
